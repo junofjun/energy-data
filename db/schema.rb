@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_05_071855) do
+ActiveRecord::Schema.define(version: 2018_05_05_072843) do
 
   create_table "cities", force: :cascade do |t|
     t.string "name"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 2018_05_05_071855) do
     t.integer "num_of_people"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "has_child"
     t.index ["city_id"], name: "index_houses_on_city_id"
   end
 

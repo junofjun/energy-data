@@ -2,7 +2,7 @@
 
 <p>
   <strong>City:</strong>
-  <%= @house.city %>
+  <%= link_to @house.city.name, @house.city %>
 </p>
 
 <p>
@@ -18,6 +18,11 @@
 <p>
   <strong>Num of people:</strong>
   <%= @house.num_of_people %>
+</p>
+
+<p>
+  <strong>Has child:</strong>
+  <%= @house.has_child %>
 </p>
 
 <%= link_to 'Edit', edit_house_path(@house) %> |
