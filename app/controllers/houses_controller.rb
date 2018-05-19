@@ -4,7 +4,7 @@ class HousesController < ApplicationController
   # GET /houses
   # GET /houses.json
   def index
-    @houses = House.all
+    @houses = params[:city_id] ? House.where(city_id: params[:city_id]) : House.all
   end
 
   # GET /houses/1

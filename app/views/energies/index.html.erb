@@ -19,7 +19,7 @@
   <tbody>
     <% @energies.each do |energy| %>
       <tr>
-        <td><%= energy.house %></td>
+        <td><%= link_to energy.house.name, energy.house %></td>
         <td><%= energy.label %></td>
         <td><%= energy.year %></td>
         <td><%= energy.month %></td>

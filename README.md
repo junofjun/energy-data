@@ -22,3 +22,12 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+## Reset Data
+
+```
+bundle exec rails db:migrate:reset
+bundle exec rails c
+irb> House.import_csv
+irb> Energy.import_csv
+```

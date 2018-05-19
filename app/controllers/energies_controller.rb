@@ -4,7 +4,17 @@ class EnergiesController < ApplicationController
   # GET /energies
   # GET /energies.json
   def index
-    @energies = Energy.all
+    @energies = all_energies
+  end
+
+  def all_energies
+    if params[:house_id]
+      House.find(params[:house_id]).energies
+    elsif params[:city_id]
+      City.find(params[:city_id]).energies
+    else
+      Energy.includes(:house).all
+    end
   end
 
   # GET /energies/1
