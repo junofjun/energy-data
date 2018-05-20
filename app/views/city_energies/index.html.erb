@@ -2,8 +2,11 @@
 
 <h1><%= link_to @city, @city %> &gt; Energies</h1>
 
+<h2>Per City</h1>
 <canvas id="perCity" width="400" height="200"></canvas>
+<h2>Per Num Of People</h1>
 <canvas id="perNumOfPeople" width="400" height="200"></canvas>
+<h2>Per Has Child</h1>
 <canvas id="perHasChild" width="400" height="200"></canvas>
 <script>
 var ctx = document.getElementById('perCity').getContext('2d');
