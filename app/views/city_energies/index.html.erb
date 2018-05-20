@@ -1,0 +1,212 @@
+<p id="notice"><%= notice %></p>
+
+<h1><%= link_to @city, @city %> &gt; Energies</h1>
+
+<canvas id="perCity" width="400" height="200"></canvas>
+<canvas id="perNumOfPeople" width="400" height="200"></canvas>
+<canvas id="perHasChild" width="400" height="200"></canvas>
+<script>
+var ctx = document.getElementById('perCity').getContext('2d');
+var datasets = []
+var data = gon.data.per_house;
+Object.keys(data).forEach(function(name){
+  datasets.push({
+    type: 'line',
+    label: name,
+    borderColor: 'rgb(255, 99, 132)',
+    fill: false,
+    data: data[name],
+  });
+});
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: gon.data.labels,
+      datasets: datasets,
+    },
+    options: {
+      responsive: true,
+      scales: {
+        yAxes: [
+          {
+            id: "y-axis-energy_production",
+            type: "linear",
+            position: "right",
+            ticks: {
+              max: 1100,
+              min: 200,
+              stepSize: 100
+            },
+          }, {
+            id: "y-axis-daylight",
+            type: "linear",
+            position: "left",
+            ticks: {
+              max: 300,
+              min: 100,
+              stepSize: 50
+            },
+          }, {
+            id: "y-axis-temperature",
+            type: "linear",
+            position: "left",
+            ticks: {
+              max: 30,
+              min: 0,
+              stepSize: 5
+            },
+          }
+        ],
+      }
+    }
+});
+
+var ctx = document.getElementById('perNumOfPeople').getContext('2d');
+var datasets = []
+var data = gon.data.per_num_of_people;
+Object.keys(data).forEach(function(name){
+  datasets.push({
+    type: 'line',
+    label: name,
+    borderColor: 'rgb(255, 99, 132)',
+    fill: false,
+    data: data[name],
+  });
+});
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: gon.data.labels,
+      datasets: datasets,
+    },
+    options: {
+      responsive: true,
+      scales: {
+        yAxes: [
+          {
+            id: "y-axis-energy_production",
+            type: "linear",
+            position: "right",
+            ticks: {
+              max: 1100,
+              min: 200,
+              stepSize: 100
+            },
+          }, {
+            id: "y-axis-daylight",
+            type: "linear",
+            position: "left",
+            ticks: {
+              max: 300,
+              min: 100,
+              stepSize: 50
+            },
+          }, {
+            id: "y-axis-temperature",
+            type: "linear",
+            position: "left",
+            ticks: {
+              max: 30,
+              min: 0,
+              stepSize: 5
+            },
+          }
+        ],
+      }
+    }
+});
+
+var ctx = document.getElementById('perHasChild').getContext('2d');
+var datasets = []
+var data = gon.data.per_has_child;
+Object.keys(data).forEach(function(name){
+  datasets.push({
+    type: 'line',
+    label: name,
+    borderColor: 'rgb(255, 99, 132)',
+    fill: false,
+    data: data[name],
+  });
+});
+
+new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: gon.data.labels,
+      datasets: datasets,
+    },
+    options: {
+      responsive: true,
+      scales: {
+        yAxes: [
+          {
+            id: "y-axis-energy_production",
+            type: "linear",
+            position: "right",
+            ticks: {
+              max: 1100,
+              min: 200,
+              stepSize: 100
+            },
+          }, {
+            id: "y-axis-daylight",
+            type: "linear",
+            position: "left",
+            ticks: {
+              max: 300,
+              min: 100,
+              stepSize: 50
+            },
+          }, {
+            id: "y-axis-temperature",
+            type: "linear",
+            position: "left",
+            ticks: {
+              max: 30,
+              min: 0,
+              stepSize: 5
+            },
+          }
+        ],
+      }
+    }
+});
+</script>
+
+<table>
+  <thead>
+    <tr>
+      <th>House</th>
+      <th>Label</th>
+      <th>Year</th>
+      <th>Month</th>
+      <th>Temperature</th>
+      <th>Daylight</th>
+      <th>Energy production</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @energies.each do |energy| %>
+      <tr>
+        <td><%= link_to energy.house.name, energy.house %></td>
+        <td><%= energy.label %></td>
+        <td><%= energy.year %></td>
+        <td><%= energy.month %></td>
+        <td><%= energy.temperature %></td>
+        <td><%= energy.daylight %></td>
+        <td><%= energy.energy_production %></td>
+        <td><%= link_to 'Show', energy %></td>
+        <td><%= link_to 'Edit', edit_energy_path(energy) %></td>
+        <td><%= link_to 'Destroy', energy, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Energy', new_energy_path %>

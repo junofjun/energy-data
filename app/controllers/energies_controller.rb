@@ -4,17 +4,14 @@ class EnergiesController < ApplicationController
   # GET /energies
   # GET /energies.json
   def index
-    @energies = all_energies
-  end
-
-  def all_energies
-    if params[:house_id]
-      House.find(params[:house_id]).energies
-    elsif params[:city_id]
-      City.find(params[:city_id]).energies
-    else
-      Energy.includes(:house).all
-    end
+    @energies = Energy.all.includes(:house)
+    gon.data = {
+      all: @energies,
+      labels: @energies.year_momths,
+      temperatures: @energies.pluck(:temperature),
+      daylights: @energies.pluck(:daylight),
+      energy_productions: @energies.pluck(:energy_production),
+    }
   end
 
   # GET /energies/1

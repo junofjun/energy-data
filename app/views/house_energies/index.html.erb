@@ -1,9 +1,8 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Energies</h1>
+<h1><%= link_to @house, @house %> &gt; Energies</h1>
 
 <canvas id="myChart" width="400" height="100"></canvas>
-<canvas id="total" width="400" height="100"></canvas>
 <script>
 var ctx = document.getElementById('myChart').getContext('2d');
 new Chart(ctx, {
@@ -70,25 +69,6 @@ new Chart(ctx, {
         ],
       }
     }
-});
-
-var ctx = document.getElementById('total').getContext('2d');
-new Chart(ctx, {
-    type: 'horizontalBar',
-    data: {
-      labels: ['tokyo', 'osaka'],
-      datasets: [
-        {
-          backgroundColor: 'rgba(0, 0, 255, 0.1)',
-          data: [2],
-        },
-        {
-          backgroundColor: 'rgba(0, 0, 255, 0.1)',
-          data: [1],
-        },
-      ]
-    },
-    options: {}
 });
 </script>
 

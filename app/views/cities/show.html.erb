@@ -5,5 +5,7 @@
   <%= @city.name %>
 </p>
 
+<%= link_to 'Houses', city_houses_path(@city) %> |
+<%= link_to 'Energies', city_energies_path(@city) %> |
 <%= link_to 'Edit', edit_city_path(@city) %> |
 <%= link_to 'Back', cities_path %>

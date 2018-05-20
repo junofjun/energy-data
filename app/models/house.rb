@@ -1,6 +1,8 @@
 require 'csv'
 
 class House < ApplicationRecord
+  alias_attribute :to_s, :name
+  
   belongs_to :city
   has_many :energies
 
