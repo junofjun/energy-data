@@ -2,6 +2,7 @@ require 'csv'
 
 class Energy < ApplicationRecord
   belongs_to :house
+  has_one :city, through: :house
 
   module CityMethods
     def per_house_hash
@@ -36,6 +37,10 @@ class Energy < ApplicationRecord
   def year_month; "#{year}/#{month}" end
   def self.year_momths
     all.map &:year_month
+  end
+
+  def self.avg_per_city_hash
+    all.joins(house: :city).group('houses.city_id').pluck('cities.name', 'AVG(energy_production)').to_h
   end
 
   def self.import_csv path='./data/dataset_50.csv', headers:true, col_sep:','

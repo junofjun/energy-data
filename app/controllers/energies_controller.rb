@@ -5,12 +5,18 @@ class EnergiesController < ApplicationController
   # GET /energies.json
   def index
     @energies = Energy.all.includes(:house)
+    @avg_per_city_hash = @energies.avg_per_city_hash
     gon.data = {
-      all: @energies,
       labels: @energies.year_momths,
-      temperatures: @energies.pluck(:temperature),
-      daylights: @energies.pluck(:daylight),
-      energy_productions: @energies.pluck(:energy_production),
+      average: {
+        temperatures: @energies.pluck(:temperature),
+        daylights: @energies.pluck(:daylight),
+        energy_productions: @energies.pluck(:energy_production),
+      },
+      avg_per_city: {
+        labels: @avg_per_city_hash.keys,
+        data: @avg_per_city_hash.values,
+      }
     }
   end
 

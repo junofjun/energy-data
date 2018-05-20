@@ -2,7 +2,7 @@ require 'csv'
 
 class House < ApplicationRecord
   alias_attribute :to_s, :name
-  
+
   belongs_to :city
   has_many :energies
 
@@ -15,7 +15,7 @@ class House < ApplicationRecord
         first_name: row.field('Firstname'),
         last_name: row.field('Lastname'),
         num_of_people: row.field('num_of_people'),
-        has_child: (row.field('has_child') == 'YES'),
+        has_child: (row.field('has_child') == 'Yes'),
       )
     end
   end

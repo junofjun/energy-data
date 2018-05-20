@@ -13,7 +13,7 @@ Object.keys(data).forEach(function(name){
   datasets.push({
     type: 'line',
     label: name,
-    borderColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(' + ColorPallete.getRgb() + ')',
     fill: false,
     data: data[name],
   });
@@ -37,24 +37,6 @@ new Chart(ctx, {
               max: 1100,
               min: 200,
               stepSize: 100
-            },
-          }, {
-            id: "y-axis-daylight",
-            type: "linear",
-            position: "left",
-            ticks: {
-              max: 300,
-              min: 100,
-              stepSize: 50
-            },
-          }, {
-            id: "y-axis-temperature",
-            type: "linear",
-            position: "left",
-            ticks: {
-              max: 30,
-              min: 0,
-              stepSize: 5
             },
           }
         ],
@@ -69,7 +51,7 @@ Object.keys(data).forEach(function(name){
   datasets.push({
     type: 'line',
     label: name,
-    borderColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(' + ColorPallete.getRgb() + ')',
     fill: false,
     data: data[name],
   });
@@ -93,24 +75,6 @@ new Chart(ctx, {
               max: 1100,
               min: 200,
               stepSize: 100
-            },
-          }, {
-            id: "y-axis-daylight",
-            type: "linear",
-            position: "left",
-            ticks: {
-              max: 300,
-              min: 100,
-              stepSize: 50
-            },
-          }, {
-            id: "y-axis-temperature",
-            type: "linear",
-            position: "left",
-            ticks: {
-              max: 30,
-              min: 0,
-              stepSize: 5
             },
           }
         ],
@@ -125,7 +89,7 @@ Object.keys(data).forEach(function(name){
   datasets.push({
     type: 'line',
     label: name,
-    borderColor: 'rgb(255, 99, 132)',
+    borderColor: 'rgb(' + ColorPallete.getRgb() + ')',
     fill: false,
     data: data[name],
   });
@@ -149,24 +113,6 @@ new Chart(ctx, {
               max: 1100,
               min: 200,
               stepSize: 100
-            },
-          }, {
-            id: "y-axis-daylight",
-            type: "linear",
-            position: "left",
-            ticks: {
-              max: 300,
-              min: 100,
-              stepSize: 50
-            },
-          }, {
-            id: "y-axis-temperature",
-            type: "linear",
-            position: "left",
-            ticks: {
-              max: 30,
-              min: 0,
-              stepSize: 5
             },
           }
         ],

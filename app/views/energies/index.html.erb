@@ -2,91 +2,86 @@
 
 <h1>Energies</h1>
 
-<canvas id="myChart" width="400" height="100"></canvas>
-<canvas id="total" width="400" height="100"></canvas>
+<!-- <canvas id="myChart" width="400" height="100"></canvas> -->
+<canvas id="avgPerCity" width="400" height="100"></canvas>
 <script>
-var ctx = document.getElementById('myChart').getContext('2d');
-new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: gon.data['labels'],
-      datasets: [
-        {
-          type: 'bar',
-          label: "Daylight",
-          backgroundColor: 'rgba(0, 0, 255, 0.1)',
-          data: gon.data['daylights'],
-          yAxisID: "y-axis-daylight",
-        },
-        {
-          type: 'bar',
-          label: "Temperature",
-          backgroundColor: 'rgb(0, 255, 0, 0.1)',
-          data: gon.data['temperatures'],
-          yAxisID: "y-axis-temperature",
-        },
-        {
-          type: 'line',
-          label: "EnergyProduction",
-          borderColor: 'rgb(255, 99, 132)',
-          fill: false,
-          data: gon.data['energy_productions'],
-          yAxisID: "y-axis-energy_production",
-        },
-      ]
-    },
-    options: {
-      responsive: true,
-      scales: {
-        yAxes: [
-          {
-            id: "y-axis-temperature",
-            type: "linear",
-            position: "left",
-            ticks: {
-              max: 30,
-              min: 0,
-              stepSize: 5
-            },
-          }, {
-            id: "y-axis-energy_production",
-            type: "linear",
-            position: "right",
-            ticks: {
-              max: 1100,
-              min: 200,
-              stepSize: 100
-            },
-          }, {
-            id: "y-axis-daylight",
-            type: "linear",
-            position: "left",
-            ticks: {
-              max: 300,
-              min: 100,
-              stepSize: 50
-            },
-          }
-        ],
-      }
-    }
-});
+// housesごとに出してるのの平均版を出したかったが時間がないので諦め
+// var ctx = document.getElementById('myChart').getContext('2d');
+// new Chart(ctx, {
+//     type: 'bar',
+//     data: {
+//       labels: gon.data['labels'],
+//       datasets: [
+//         {
+//           type: 'bar',
+//           label: "Daylight",
+//           backgroundColor: 'rgba(0, 0, 255, 0.1)',
+//           data: gon.data['daylights'],
+//           yAxisID: "y-axis-daylight",
+//         },
+//         {
+//           type: 'bar',
+//           label: "Temperature",
+//           backgroundColor: 'rgb(0, 255, 0, 0.1)',
+//           data: gon.data['temperatures'],
+//           yAxisID: "y-axis-temperature",
+//         },
+//         {
+//           type: 'line',
+//           label: "EnergyProduction",
+//           borderColor: 'rgb(255, 99, 132)',
+//           fill: false,
+//           data: gon.data['energy_productions'],
+//           yAxisID: "y-axis-energy_production",
+//         },
+//       ]
+//     },
+//     options: {
+//       responsive: true,
+//       scales: {
+//         yAxes: [
+//           {
+//             id: "y-axis-temperature",
+//             type: "linear",
+//             position: "left",
+//             ticks: {
+//               max: 30,
+//               min: 0,
+//               stepSize: 5
+//             },
+//           }, {
+//             id: "y-axis-energy_production",
+//             type: "linear",
+//             position: "right",
+//             ticks: {
+//               max: 1100,
+//               min: 200,
+//               stepSize: 100
+//             },
+//           }, {
+//             id: "y-axis-daylight",
+//             type: "linear",
+//             position: "left",
+//             ticks: {
+//               max: 300,
+//               min: 100,
+//               stepSize: 50
+//             },
+//           }
+//         ],
+//       }
+//     }
+// });
 
-var ctx = document.getElementById('total').getContext('2d');
+var ctx = document.getElementById('avgPerCity').getContext('2d');
 new Chart(ctx, {
-    type: 'horizontalBar',
+    type: 'pie',
     data: {
-      labels: ['tokyo', 'osaka'],
-      datasets: [
-        {
-          backgroundColor: 'rgba(0, 0, 255, 0.1)',
-          data: [2],
-        },
-        {
-          backgroundColor: 'rgba(0, 0, 255, 0.1)',
-          data: [1],
-        },
-      ]
+      labels: gon.data.avg_per_city.labels,
+      datasets: [{
+        backgroundColor: ['rgb(' + ColorPallete.getRgb() + ')', 'rgb(' + ColorPallete.getRgb() + ')', 'rgb(' + ColorPallete.getRgb() + ')'],
+        data: gon.data.avg_per_city.data,
+      }]
     },
     options: {}
 });
